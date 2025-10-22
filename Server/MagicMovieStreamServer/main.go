@@ -5,6 +5,7 @@ import (
 	"log"
 
 	"github.com/gin-gonic/gin"
+	controllers "github.com/shanu-shr/MagicStreamMovies/Server/MagicMovieStreamServer/Controllers"
 )
 
 func main() {
@@ -16,9 +17,10 @@ func main() {
 		c.String(200, "Hello, magic stream movies !")
 	})
 
+	router.GET("/movies", controllers.GetMovies())
+
 	err := router.Run(":3000")
 	if err != nil {
 		log.Fatal("Unable to start server on port 3000")
 	}
-
 }
